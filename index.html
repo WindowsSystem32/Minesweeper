@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MineSweeper on HTML</title>
+    <script src="minesweeper.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="settings">
+      <p1>설정</p1>
+      <div id="input-box">
+        <label>가로 크기</label>
+        <input type="number" min="4" id="input-width" value="25" step="1" onfocus="setFocus(true, this)" onblur="setFocus(false, this)" onchange="onChange()"/>
+      </div>
+      <div id="input-box">
+        <label>세로 크기</label>
+        <input type="number" min="4" id="input-height" value="25" step="1" onfocus="setFocus(true, this)" onblur="setFocus(false, this)" onchange="onChange()"/>
+      </div>
+      <div id="input-box">
+        <label>지뢰 개수</label>
+        <input type="number" min="1" max="386" id="input-mineCount" value="99" step="1" onfocus="setFocus(true, this)" onblur="setFocus(false, this)" onchange="onChange()"/>
+      </div>
+      <button id="generate" class="active" onclick="generate()">생성</button>
+    </div>
+    <div id="progress-window" class="invisible">
+      <p2>생성 중... 잠시만 기다려 주세요.</p2>
+      <div class="progress progress-bg">
+        <div id="progress-generate" class="progress progress-fg progress-loop"></div>
+      </div>
+    </div>
+    <div id="board" class="invisible">
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

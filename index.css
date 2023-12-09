@@ -1,0 +1,254 @@
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+:root {
+  --disabled-color: 191, 191, 191;
+  --focus-color: 34, 146, 252;
+  --transform: 0.3s ease-in-out;
+  --wid: min(100%, 500px);
+  --font-family: 'NanumSquareNeo-Variable', 'Noto Sans KR', sans-serif;
+  --radius: 5px;
+  --background-color: 255, 255, 255;
+  --foreground-color: 0, 0, 0;
+  --progress-radius: 5px;
+}
+body {
+  font-family: var(--font-family);
+  background-image: url(https://images.unsplash.com/photo-1529619768328-e37af76c6fe5);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#settings {
+  position: absolute;
+  opacity: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all var(--transform);
+  transition-duration: 0.5s;
+  border-radius: var(--radius);
+  outline: 1px solid rgba(var(--disabled-color), 1);
+  padding: 25px;
+  padding-top: 100px;
+  background-color: rgba(var(--background-color), 1);
+  z-index: 0;
+  box-shadow: 0 0 10px var(--foreground-color);
+}
+#settings:only-child {
+  z-index: 100;
+}
+#settings.invisible {
+  opacity: 0;
+}
+.invisible {
+  pointer-events: none;
+  user-select: none;
+}
+p1 {
+  font-family: var(--font-family);
+  font-size: xx-large;
+}
+p2 {
+  font-family: var(--font-family);
+  font-size: x-large;
+}
+p3 {
+  font-family: var(--font-family);
+  font-size: large;
+}
+p4 {
+  font-family: var(--font-family);
+  font-size: small;
+}
+p5 {
+  font-family: var(--font-family);
+  font-size: x-small;
+}
+p6 {
+  font-family: var(--font-family);
+  font-size: xx-small;
+}
+#settings p1 {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translate(-50%, -50%);
+  color: rgba(var(--foreground-color), 1);
+  transition: all var(--transform);
+}
+#settings.disabled p1 {
+  color: rgba(var(--disabled-color), 1);
+}
+#input-box {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: block;
+  width: var(--wid);
+  z-index: 1;
+}
+#input-box.focus {
+  z-index: 2;
+}
+#input-box label {
+  background-image: linear-gradient(90deg, rgba(var(--background-color), 0) 0%, rgba(var(--background-color), 1) 7px, rgba(var(--background-color), 1) calc(100% - 7px), rgba(var(--background-color), 0) 100%);
+  color: rgba(var(--foreground-color), 1);
+  transition: all var(--transform);
+  max-width: calc(100% - (2 * 10px) - (2 * 5px));
+  padding: 0 10px;
+  font-size: 10pt;
+  position: absolute;
+  top: 0;
+  left: 2px;
+  transform: translate(0, -50%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  font-weight: 300;
+}
+#input-box.focus label {
+  color: rgba(var(--focus-color), 1);
+  font-weight: 700;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#input-box.disabled label {
+  color: rgba(var(--disabled-color), 1);
+  font-weight: 100;
+}
+#input-box input {
+  border-radius: var(--radius);
+  border: 1px solid rgba(var(--foreground-color), 1);
+  box-sizing: border-box;
+  font-size: 16pt;
+  padding: 10px 11px;
+  width: 100%;
+  height: 50px;
+  outline: none;
+  transition: all var(--transform);
+  background-color: var(--background-color);
+}
+#input-box.disabled input {
+  pointer-events: none;
+  user-select: none;
+  border-color: rgba(var(--disabled-color), 1);
+  color: rgba(var(--disabled-color), 1);
+}
+#input-box.focus input {
+  border-color: rgba(var(--focus-color), 1);
+  box-shadow: 0 0 10px 0px rgba(var(--focus-color), 1);
+}
+button {
+  background-color: rgba(var(--disabled-color), 1);
+  transition: all var(--transform);
+  border: none;
+  border-radius: var(--radius);
+  outline: none;
+  height: 50px;
+  width: var(--wid);
+  font-family: var(--font-family);
+  font-size: 14pt;
+  color: #faf9f9;
+}
+button.active {
+  background-color: rgba(var(--focus-color), 1);
+}
+#progress-window {
+  position: absolute;
+  opacity: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all var(--transform);
+  transition-duration: 0.5s;
+  border-radius: var(--radius);
+  outline: 1px solid rgba(var(--disabled-color), 1);
+  padding: 25px;
+  background-color: rgba(var(--background-color), 0.5);
+  z-index: 99;
+  box-shadow: 0 0 10px var(--foreground-color);
+  backdrop-filter: blur(3px);
+  width: max-content;
+}
+#progress-window.invisible {
+  opacity: 0%;
+}
+.progress {
+  border-radius: var(--progress-radius);
+}
+.progress-bg {
+  height: calc(var(--progress-radius) * 2);
+  background-color: rgba(var(--background-color), 0.62);
+  backdrop-filter: blur(3px);
+  position: relative;
+  margin: 10px;
+}
+.progress-fg {
+  background-color: rgba(var(--focus-color), 1);
+  left: 0;
+  top: 0;
+  width: calc(var(--progress-radius) * 2);
+  height: 100%;
+  position: absolute;
+}
+@keyframes loading-loop {
+  0%, 
+  1% {
+    left: 0;
+    width: calc(var(--progress-radius) * 2);
+  }
+  25% {
+    left: 0;
+    width: 100%;
+  }
+  49%, 
+  51% {
+    left: calc(100% - var(--progress-radius) * 2);
+    width: calc(var(--progress-radius) * 2);
+  }
+  75% {
+    left: 0;
+    width: 100%;
+  }
+  99%, 
+  100% {
+    left: 0;
+    width: calc(var(--progress-radius) * 2);
+  }
+}
+.progress-loop {
+  animation-duration: 2s;
+  animation-name: loading-loop;
+  animation-iteration-count: infinite;
+}
+#board {
+  position: absolute;
+  opacity: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all var(--transform);
+  transition-duration: 0.5s;
+  border-radius: var(--radius);
+  outline: 1px solid rgba(var(--disabled-color), 1);
+  padding: 25px;
+  background-color: rgba(var(--background-color), 0.5);
+  z-index: 99;
+  box-shadow: 0 0 10px var(--foreground-color);
+  backdrop-filter: blur(3px);
+  width: max-content;
+}
+#board.invisible {
+  opacity: 0%;
+  top: -100%;
+}
+#board a {
+  text-decoration: none;
+  text-decoration-color: none;
+  font-family: 'Noto Color Emoji';
+}
